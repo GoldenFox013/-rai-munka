@@ -40,26 +40,6 @@ namespace gyak
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
             Console.ReadKey();
         }
         static void Adatbeker()
@@ -220,7 +200,9 @@ namespace gyak
                     string query = "DELETE FROM vasarlok WHERE nev=@nev;";
                     using(MySqlCommand cmd = new MySqlCommand( query, conn))
                     {
-
+                        cmd.Parameters.AddWithValue("@nev", nev);
+                        cmd.ExecuteNonQuery ();
+                        Console.WriteLine("Sikeres volt a törlés!");
                     }
                 }
             }
